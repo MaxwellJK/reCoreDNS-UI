@@ -1,0 +1,10 @@
+services:
+  recoredns-ui:
+    container_name: recoredns-ui
+    image: ghcr.io/maxwelljk/recoredns-ui:latest
+    environment:
+      - RECOREDNS_ADMIN_USERNAME=user
+      - RECOREDNS_ADMIN_PASSWORD=password
+      - RECOREDNS_MYSQL_DSN=coredns:coredns@tcp(mysql.fontanas-uk.tailcloud:3306)/coredns?charset=utf8mb4
+    port:
+      - 3000:3000
