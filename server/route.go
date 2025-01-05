@@ -3,7 +3,7 @@ package server
 import (
 	"net/http"
 	"path"
-	"reCoreD-UI/controllers"
+	"reCoreDNS-UI/controllers"
 
 	"github.com/gin-gonic/gin"
 	"github.com/prometheus/client_golang/prometheus/promhttp"

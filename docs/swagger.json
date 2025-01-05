@@ -1,8 +1,8 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "APIs for reCoreD-UI",
-        "title": "reCoreD-UI API",
+        "description": "APIs for reCoreDNS-UI",
+        "title": "reCoreDNS-UI API",
         "contact": {},
         "version": "1.0"
     },

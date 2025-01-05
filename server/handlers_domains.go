@@ -3,12 +3,12 @@ package server
 import (
 	"fmt"
 	"net/http"
-	"reCoreD-UI/controllers"
-	"reCoreD-UI/models"
+	"reCoreDNS-UI/controllers"
+	"reCoreDNS-UI/models"
 
 	"github.com/gin-gonic/gin"
 
-	_ "reCoreD-UI/docs"
+	_ "reCoreDNS-UI/docs"
 )
 
 // GetDomains godoc

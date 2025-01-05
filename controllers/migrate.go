@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"reCoreD-UI/database"
-	"reCoreD-UI/models"
+	"reCoreDNS-UI/database"
+	"reCoreDNS-UI/models"
 )
 
 func Migrate() error {

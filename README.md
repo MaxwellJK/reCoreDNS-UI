@@ -29,37 +29,56 @@ A mysql server is needed.
 
 ```bash
 # example
-export RECORED_MYSQL_DSN="recoredui:A123456a-@tcp(mysql.dev:3306)/recoredui?charset=utf8mb4"
-export RECORED_MYSQL_DSN="coredns:coredns@tcp(mysql.fontanas-uk.tailcloud:3306)/coredns?charset=utf8mb4"
-./reCoreD-UI config db migrate
+export RECOREDNS_MYSQL_DSN="recorednsui:A123456a-@tcp(mysql.dev:3306)/recorednsui?charset=utf8mb4"
+export RECOREDNS_MYSQL_DSN="coredns:coredns@tcp(mysql.fontanas-uk.tailcloud:3306)/coredns?charset=utf8mb4"
+./reCoreDNS-UI config db migrate
 
 # setup admin user
-./reCoreD-UI config user -u user -p password
+./reCoreDNS-UI config user -u user -p password
 
 # setup DNS
-./reCoreD-UI config dns -s 1.1.1.1 -s 1.2.3.4
+./reCoreDNS-UI config dns -s 1.1.1.1 -s 1.2.3.4
 
 # run server and open http://localhost:3000
-./reCoreD-UI server
+./reCoreDNS-UI server
 ```
 
 ```ini
 # systemd service
 [Unit]
-Description=reCoreD-UI
+Description=reCoreDNS-UI
 
 [Service]
 Type=simple
-# RECORED_MYSQL_DSN="dsn"
-EnvironmentFile=-/etc/default/recored-ui
-EnvironmentFile=-/etc/sysconfig/recored-ui
-ExecStart=/usr/local/bin/reCoreD-UI server
+# RECOREDNS_MYSQL_DSN="dsn"
+EnvironmentFile=-/etc/default/recoredns-ui
+EnvironmentFile=-/etc/sysconfig/recoredns-ui
+ExecStart=/usr/local/bin/reCoreDNS-UI server
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-## Build docker image
+## Docker image
 Install `docker` first.
 
 `docker build -t reCoreDNS-UI:latest .`
+
+Once the build is succesfull, connect to the container 
+`docker run -d --name reCoreDNS-UI -it salma:latest /bin/sh`
+
+and run the following commands:
+- Preparet eh database
+    `./reCoreDNS-UI config db migrate`
+- Configure login credentials to access reCoreDNS-UI
+    `./reCoreDNS-UI config user -u $USER -p $PASSWORD`
+- Setup the DNS:
+    `./reCoreDNS-UI config dns -s 1.1.1.1 -s 1.2.3.4`
+
+Stop the container without deleting it (it's sufficient to type `exit` after running the last command) then restart it using
+
+`docker start reCoreDNS-UI`
+
+Head over to http://localhost:3000 and to access reCoreDNS-UI and start managing your DNS entries.
+
+## Docker Compose

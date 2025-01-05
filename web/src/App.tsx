@@ -19,7 +19,7 @@ function detectLanguage() {
 }
 
 function ReactApp() {
-  document.title = 'reCoreD-UI'
+  document.title = 'reCoreDNS-UI'
   const themeUsed = isBrowserDarkTheme() ? theme.darkAlgorithm : theme.defaultAlgorithm
 
   return (

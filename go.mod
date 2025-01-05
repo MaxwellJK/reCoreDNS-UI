@@ -1,4 +1,4 @@
-module reCoreD-UI
+module reCoreDNS-UI
 
 go 1.22.1
 

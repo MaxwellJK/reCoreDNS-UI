@@ -55,8 +55,8 @@ definitions:
     type: object
 info:
   contact: {}
-  description: APIs for reCoreD-UI
-  title: reCoreD-UI API
+  description: APIs for reCoreDNS-UI
+  title: reCoreDNS-UI API
   version: "1.0"
 paths:
   /domains/:

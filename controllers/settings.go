@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"errors"
-	"reCoreD-UI/database"
-	"reCoreD-UI/models"
+	"reCoreDNS-UI/database"
+	"reCoreDNS-UI/models"
 	"strings"
 
 	"github.com/sirupsen/logrus"

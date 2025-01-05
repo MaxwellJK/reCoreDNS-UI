@@ -8,17 +8,17 @@ import (
 
 var (
 	GaugeDomainCounts = prometheus.NewGauge(prometheus.GaugeOpts{
-		Namespace: "recoredui",
+		Namespace: "recorednsui",
 		Subsystem: "domains",
 		Name:      "count",
-		Help:      "domains managed in reCoreD-UI",
+		Help:      "domains managed in reCoreDNS-UI",
 	})
 
 	GaugeRecordCounts = prometheus.NewGaugeVec(prometheus.GaugeOpts{
-		Namespace: "recoredui",
+		Namespace: "recorednsui",
 		Subsystem: "records",
 		Name:      "count",
-		Help:      "records managed in reCoreD-UI, by domain",
+		Help:      "records managed in reCoreDNS-UI, by domain",
 	}, []string{"domain"})
 )
 
@@ -26,7 +26,7 @@ func RegisterMetrics() {
 	prometheus.MustRegister(GaugeDomainCounts, GaugeRecordCounts)
 
 	GormMetrics := ormMetric.New(ormMetric.Config{
-		DBName: "recored-ui",
+		DBName: "recoredns-ui",
 		MetricsCollector: []ormMetric.MetricsCollector{
 			&ormMetric.MySQL{
 				VariableNames: []string{"Threads_running"},
@@ -35,7 +35,7 @@ func RegisterMetrics() {
 	}).Collectors
 	prometheus.MustRegister(GormMetrics...)
 
-	GinMetrics := ginprometheus.NewPrometheus("recoredui")
+	GinMetrics := ginprometheus.NewPrometheus("recorednsui")
 	for _, v := range GinMetrics.MetricsList {
 		prometheus.Register(v.MetricCollector)
 	}

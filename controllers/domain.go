@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"fmt"
-	"reCoreD-UI/database"
-	"reCoreD-UI/models"
+	"reCoreDNS-UI/database"
+	"reCoreDNS-UI/models"
 	"strconv"
 
 	"github.com/sirupsen/logrus"
@@ -152,7 +152,6 @@ func UpdateDomain(d *models.Domain) error {
 		if v.RecordType != "SOA" {
 			v.Zone = d.WithDotEnd()
 		} else {
-
 			soa := d.GenerateSOA()
 			soaMap, err := structToMap(soa.SOARecord)
 			if err != nil {

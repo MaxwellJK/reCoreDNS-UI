@@ -2,7 +2,7 @@ package server
 
 import (
 	"net"
-	"reCoreD-UI/database"
+	"reCoreDNS-UI/database"
 
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"

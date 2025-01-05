@@ -1,8 +1,8 @@
 package config
 
 import (
-	"reCoreD-UI/controllers"
-	"reCoreD-UI/database"
+	"reCoreDNS-UI/controllers"
+	"reCoreDNS-UI/database"
 
 	"github.com/urfave/cli/v2"
 	"github.com/urfave/cli/v2/altsrc"
@@ -17,14 +17,14 @@ var UserCommand = &cli.Command{
 			Aliases: []string{"u"},
 			Value:   "amdin",
 			Usage:   "admin username",
-			EnvVars: []string{"RECORED_ADMIN_USERNAME"},
+			EnvVars: []string{"RECOREDNS_ADMIN_USERNAME"},
 		}),
 		altsrc.NewStringFlag(&cli.StringFlag{
 			Name:     "password",
 			Aliases:  []string{"p"},
 			Required: true,
 			Usage:    "admin password",
-			EnvVars:  []string{"RECORED_ADMIN_PASSWORD"},
+			EnvVars:  []string{"RECOREDNS_ADMIN_PASSWORD"},
 		}),
 	},
 	Action: setUser,

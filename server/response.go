@@ -3,7 +3,7 @@ package server
 import (
 	"errors"
 	"net/http"
-	"reCoreD-UI/models"
+	"reCoreDNS-UI/models"
 
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"

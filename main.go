@@ -2,9 +2,9 @@ package main
 
 import (
 	"os"
-	"reCoreD-UI/cmd/config"
-	"reCoreD-UI/cmd/server"
-	_ "reCoreD-UI/docs"
+	"reCoreDNS-UI/cmd/config"
+	"reCoreDNS-UI/cmd/server"
+	_ "reCoreDNS-UI/docs"
 
 	"github.com/sirupsen/logrus"
 	"github.com/urfave/cli/v2"
@@ -15,23 +15,23 @@ func init() {
 	logrus.SetReportCaller(true)
 }
 
-//	@title						reCoreD-UI API
-//	@version					1.0
-//	@description				APIs for reCoreD-UI
-//	@BasePath					/api/v1
-//	@securityDefinitions.basic	BasicAuth
+// @title						reCoreDNS-UI API
+// @version					1.0
+// @description				APIs for reCoreDNS-UI
+// @BasePath					/api/v1
+// @securityDefinitions.basic	BasicAuth
 func main() {
 	flags := []cli.Flag{
 		&cli.StringFlag{
 			Name:    "config",
 			Usage:   "config yaml file",
 			Aliases: []string{"c"},
-			EnvVars: []string{"RECORED_CONFIG_FILE"},
+			EnvVars: []string{"RECOREDNS_CONFIG_FILE"},
 		},
 		altsrc.NewStringFlag(&cli.StringFlag{
 			Name:    "mysql-dsn",
 			Usage:   "mysql dsn",
-			EnvVars: []string{"RECORED_MYSQL_DSN"},
+			EnvVars: []string{"RECOREDNS_MYSQL_DSN"},
 		}),
 		altsrc.NewBoolFlag(&cli.BoolFlag{
 			Name:  "debug",
@@ -47,7 +47,7 @@ func main() {
 	}
 
 	app := &cli.App{
-		Name:  "reCoreD-UI",
+		Name:  "reCoreDNS-UI",
 		Usage: "Web UI for CoreDNS",
 		Before: altsrc.InitInputSourceWithContext(
 			flags, altsrc.NewYamlSourceFromFlagFunc("config"),

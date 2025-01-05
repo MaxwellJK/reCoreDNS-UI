@@ -1,8 +1,8 @@
 package config
 
 import (
-	"reCoreD-UI/controllers"
-	"reCoreD-UI/database"
+	"reCoreDNS-UI/controllers"
+	"reCoreDNS-UI/database"
 
 	"github.com/urfave/cli/v2"
 )

@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"fmt"
-	"reCoreD-UI/database"
-	"reCoreD-UI/models"
+	"reCoreDNS-UI/database"
+	"reCoreDNS-UI/models"
 	"strconv"
 
 	"gorm.io/gorm"
