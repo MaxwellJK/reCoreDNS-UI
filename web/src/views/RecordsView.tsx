@@ -34,6 +34,17 @@ export default function RecordsView() {
             })
     }, [domain])
 
+    // Debounce search input
+    useEffect(() => {
+        if (domain)
+            recordStore.loadRecords(domain).then(() => setLoading(false)).catch(e => {
+                const msg = getErrorInfo(e as ResponseError)
+                notification.error(msg)
+                console.error(e)
+            })
+    }, [domain])
+
+
     function closeEditModal() {
         setCurrentRecord(emptyRecord)
         setEditModalShow(false)
@@ -56,9 +67,13 @@ export default function RecordsView() {
     return (
         <>
             {
-                loading ? <Spin size='large' /> :
+                loading ? (
+                    <Flex justify="center" align="center" style={{ height: '100vh' }}>
+                        <Spin size='large' />
+                    </Flex>
+                ) : (
                     <>
-                        <Layout className="records-layout">
+                        <Layout className="records-layout" style={{ height: '100vh' }}>
                             <Layout.Header className="records-layout-header">
                                 <Flex align='center' className="toolbar">
                                     <Flex align="center" gap='small'>
@@ -77,8 +92,9 @@ export default function RecordsView() {
                             <Layout.Content style={{
                                 margin: 24,
                                 borderRadius: borderRadiusLG,
-                                minHeight: 480,
                                 background: colorBgContainer,
+                                height: 'calc(100vh - 64px - 48px)', // Header height + margin
+                                overflow: 'auto'
                             }}>
                                 <Table<Record<RecordT>>
                                     dataSource={recordStore.records
@@ -113,6 +129,7 @@ export default function RecordsView() {
                             editRecord={record => recordStore.updateRecord(domain!, record)}
                             createRecord={record => recordStore.addRecord(domain!, record)} />
                     </>
+                )
             }
         </>
     )
