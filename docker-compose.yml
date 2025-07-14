@@ -6,5 +6,5 @@ services:
       - RECOREDNS_ADMIN_USERNAME=user
       - RECOREDNS_ADMIN_PASSWORD=password
       - RECOREDNS_MYSQL_DSN=coredns:coredns@tcp(mysql.fontanas-uk.tailcloud:3306)/coredns?charset=utf8mb4
-    port:
+    ports:
       - 3000:3000
