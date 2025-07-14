@@ -25,6 +25,7 @@ var Command = &cli.Command{
 			Name:  "port",
 			Value: 3000,
 			Usage: "Port for listen at",
+			EnvVars: []string{"RECOREDNS_SERVER_PORT"},
 		}),
 	},
 	Action: runServer,
